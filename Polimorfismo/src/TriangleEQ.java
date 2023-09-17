@@ -5,6 +5,7 @@ public class TriangleEQ extends Figura{
         this.b=b;
         this.h=h;
     }
+    @Override
     public double area(){
         return ((b*h)/2);
     }
