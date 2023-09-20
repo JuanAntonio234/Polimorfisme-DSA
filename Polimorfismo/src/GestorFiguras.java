@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class GestorFiguras {
     public static double suma(Figura[] v){
@@ -6,22 +8,16 @@ public class GestorFiguras {
             suma+=f.area();
         return suma;
     }
-    private static void sort(Figura[] v) {
-        for (int i =0;i < v.length-1;i++){
-            int j=i;
-            for(int k=i+1;k<v.length;k++){
-                if(v[k].area()<v[j].area()){
-                    j=k;
-                }
-            }
-            Figura temp =v[i];
-            v[i]=v[j];
-            v[j]=temp;
-        }
 
-        for (Figura f:v)
+    public static void print(Figura[] v){
+        for (Figura f: v){
             System.out.println(f.area());
+        }
     }
+    public static void sort(Figura[] v){
+        Arrays.sort(v, Comparator.comparing(Figura::area));
+    }
+
     public static void main(String[] args) {
         Figura[] v = new Figura[4];
 
@@ -32,8 +28,10 @@ public class GestorFiguras {
 
         double res = suma(v);
         System.out.println("suma: " + res);
-        //print(v);
 
-        sort(v);  //  print(v);
+        print(v);
+        sort(v);
+        System.out.println("Lista ordenada:");
+        print(v);
     }
 }
